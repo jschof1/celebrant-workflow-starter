@@ -1,0 +1,26 @@
+{
+  "skill_name": "brochure-generator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Generate a brochure for the celebrant in this repo. Pull everything from the existing website files — the copy, colours, fonts, images. Save the output to brochure-materials/brochure.html",
+      "expected_output": "A self-contained trifold brochure HTML file with all content extracted from the celebrant-catharine-dawson repo, images embedded as base64, APC seal on back cover, QR code, and matching the website's colour scheme.",
+      "working_directory": "/Users/jack/Documents/GitHub/celebrant-catharine-dawson",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Make the brochure for this celebrant. Use all the assets and data from the website. Output to brochure-materials/brochure.html",
+      "expected_output": "A self-contained trifold brochure HTML for Thistle Dhu / Marty, extracting data from the celebrant-marty repo, with Scottish purple/green palette from index.css, services and fees from data files, base64 images, APC seal.",
+      "working_directory": "/Users/jack/Documents/GitHub/celebrant-marty",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Run the brochure for this one. Get everything from the website.",
+      "expected_output": "A self-contained trifold brochure HTML for Fiona Armfield, extracting data from the fiona-armfield-celebrant repo, with olive/gold/teal palette, funeral services, fees, portrait photos embedded as base64, APC seal.",
+      "working_directory": "/Users/jack/Documents/GitHub/fiona-armfield-celebrant",
+      "files": []
+    }
+  ]
+}

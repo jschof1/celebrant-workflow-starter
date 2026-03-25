@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiona Armfield - Funeral Celebrant - Brochure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        :root {
+            --page-width: 297mm;
+            --page-height: 210mm;
+            --panel-width: calc(var(--page-width) / 3);
+            --primary: #7a9a6d; /* Lighter Olive Green */
+            --primary-dark: #5e8250; /* Medium olive for headings */
+            --accent: #b8960b;  /* Warm Goldenrod */
+            --teal: #5f9ea0; /* Teal accent */
+            --teal-light: #7ebfc1; /* Light teal */
+            --text: #3a4a3e;
+            --bg-soft: #F7F6EE;
+            --bg-cream: #FAF9F3;
+        }
+
+        @page { size: A4 landscape; margin: 0; }
+        
+        body { 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Source Sans 3', sans-serif; 
+            background: #525659; 
+            color: var(--text);
+        }
+
+        h1, h2, h3 { 
+            font-family: 'Playfair Display', serif; 
+            color: var(--primary-dark);
+        }
+
+        .brochure-page {
+            width: var(--page-width);
+            height: var(--page-height);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: var(--bg-soft);
+            page-break-after: always;
+            overflow: hidden;
+            position: relative;
+            margin: 10mm auto;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        }
+
+        .panel { 
+            padding: 12mm 10mm; 
+            height: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            position: relative; 
+            z-index: 1; 
+            box-sizing: border-box;
+        }
+
+        .panel-bg-accent { background-color: var(--bg-cream); }
+        .panel-bg-primary { background: linear-gradient(135deg, var(--primary-dark), var(--teal)); color: white; }
+        .panel-bg-primary h1, .panel-bg-primary h2, .panel-bg-primary h3 { color: white; }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.9;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+            z-index: 1;
+        }
+
+        .content-overlay {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .apc-seal {
+            width: 40mm;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            margin-bottom: 4mm;
+        }
+
+        .service-title {
+            font-weight: 600;
+            color: var(--primary-dark);
+            border-bottom: 1px solid var(--teal-light);
+            display: inline-block;
+            margin-bottom: 1mm;
+            font-size: 11pt;
+        }
+
+        .body-text {
+            font-size: 10.5pt;
+            line-height: 1.5;
+            margin-bottom: 3mm;
+        }
+
+        .footer-note {
+            font-size: 9pt;
+            font-style: italic;
+            margin-top: auto;
+            border-top: 1px solid var(--teal-light);
+            padding-top: 2mm;
+        }
+
+        .panel .border-r {
+            border-color: var(--teal-light);
+        }
+
+        @media print {
+            body { background: white; }
+            .brochure-page { margin: 0; box-shadow: none; }
+            * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+
+        @media screen and (max-width: 297mm) {
+            body { padding: 20px; }
+            .brochure-page {
+                transform: scale(0.6);
+                transform-origin: top center;
+                margin-bottom: -80mm;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SIDE A: OUTSIDE -->
+    <div class="brochure-page">
+        
+        <!-- Panel 3: Inside Flap (Fees & Promise) -->
+        <div class="panel border-r panel-bg-accent">
+            <h2 class="text-2xl mb-4">Professional Fees</h2>
+            <div class="space-y-3 mb-6">
+                <div>
+                    <p class="font-semibold text-sm">Funeral Service</p>
+                    <p class="text-sm">Crematorium or cemetery chapel — £260</p>
+                </div>
+                <div>
+                    <p class="font-semibold text-sm">Memorial Service</p>
+                    <p class="text-sm">From £220</p>
+                </div>
+                <div>
+                    <p class="font-semibold text-sm">Scattering or Burial of Ashes</p>
+                    <p class="text-sm">From £70</p>
+                </div>
+                <div>
+                    <p class="font-semibold text-sm">Pet Committal or Memorial</p>
+                    <p class="text-sm">From £150</p>
+                </div>
+                <p class="text-[9pt] italic opacity-70 mt-2">Additional travel costs may apply beyond 30 miles of Lee on Solent.</p>
+            </div>
+
+            <h2 class="text-2xl mb-4">My Promise</h2>
+            <p class="body-text">Together we will explore your most treasured memories and all the ways in which they were special. I will help you find the words to express how deeply they were appreciated and cherished.</p>
+            <p class="body-text">I will work in partnership with you to agree the words of the ceremony beforehand so that you can have complete confidence in your loved one being honoured in the right way.</p>
+        </div>
+
+        <!-- Panel 2: Back Cover (Contact & APC) -->
+        <div class="panel text-center">
+            <div class="mt-4 mb-8">
+                <h3 class="text-xl uppercase tracking-widest mb-2">Fiona Armfield</h3>
+                <p class="text-sm italic">Funeral Celebrant</p>
+            </div>
+
+            <div class="space-y-4 mb-10">
+                <div>
+                    <p class="text-xs uppercase tracking-widest text-gray-500">Call me</p>
+                    <p class="text-lg">07963 410 263</p>
+                </div>
+                <div>
+                    <p class="text-xs uppercase tracking-widest text-gray-500">Email</p>
+                    <p class="text-sm">enquiries@fionafuneralcelebrant.co.uk</p>
+                </div>
+                <div>
+                    <p class="text-xs uppercase tracking-widest text-gray-500">Website</p>
+                    <p class="text-sm">fionaarmfieldfuneralcelebrant.co.uk</p>
+                </div>
+            </div>
+
+            <div id="qrcode" class="mx-auto mb-2 flex justify-center"></div>
+            <p class="text-[8pt] opacity-60 mb-8">Scan to visit website</p>
+
+            <div class="mt-auto">
+                <p class="text-[8pt] uppercase tracking-widest mb-2">Trained & Certified By</p>
+                <img src="assets/apc-logo/APC-seal.png" alt="APC Seal" class="apc-seal">
+            </div>
+        </div>
+
+        <!-- Panel 1: Front Cover -->
+        <div class="panel text-center justify-center">
+            <div class="mb-8">
+                <img src="fiona/logo.jpeg" alt="Logo" class="w-32 mx-auto mb-6">
+                <h1 class="text-4xl font-bold mb-2 tracking-tight">Fiona Armfield</h1>
+                <p class="text-xl uppercase tracking-[0.2em] font-light text-gray-600">Funeral Celebrant</p>
+            </div>
+            
+            <div class="mb-8 px-4">
+                <div class="w-full aspect-square rounded-xl overflow-hidden mb-6">
+                    <img src="fiona/first-portrait.webp" alt="Fiona Armfield" class="w-full h-full object-cover">
+                </div>
+                <p class="text-2xl italic font-serif leading-relaxed text-olive-800">"Their Life, Told by The People Who Loved Them"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIDE B: INSIDE -->
+    <div class="brochure-page">
+        
+        <!-- Panel 4: About Me -->
+        <div class="panel border-r">
+            <h2 class="text-3xl mb-6">Meet Fiona</h2>
+            <div class="mb-6 rounded-lg overflow-hidden h-48">
+                <img src="fiona/second-portrait.webp" alt="Fiona Armfield" class="w-full h-full object-cover">
+            </div>
+            <p class="body-text">Having worked successfully for over 35 years in a variety of highly sensitive front facing roles, I bring professionalism to my work with funeral directors and compassion, support and care to bereaved families.</p>
+            <p class="body-text">My own experiences of loss have given me a personal understanding of grief. If you entrust something this important to me, I will consider it a privilege to be handled with the utmost care, honesty, and respect.</p>
+            <div class="mt-4 p-4 bg-olive-50 border-l-4 border-olive-600">
+                <p class="text-sm italic">"I am fully trained and insured by The Academy of Professional Celebrants and I hold a certificate of distinction in Funeral Celebrancy."</p>
+            </div>
+        </div>
+
+        <!-- Panel 5: Core Services -->
+        <div class="panel border-r">
+            <h2 class="text-3xl mb-6">Services</h2>
+            
+            <div class="service-item">
+                <span class="service-title">Funeral Ceremony</span>
+                <p class="body-text text-sm">I meet with you to understand your wishes, liaise with your funeral director and write a bespoke ceremony that captures the essence of your loved one.</p>
+            </div>
+
+            <div class="service-item">
+                <span class="service-title">Memorial Service</span>
+                <p class="body-text text-sm">Following a direct cremation or private funeral, I design a tailored ceremony to reflect and celebrate your loved one’s life and legacy.</p>
+            </div>
+
+            <div class="service-item">
+                <span class="service-title">Burial or Scattering of Ashes</span>
+                <p class="body-text text-sm">I write and deliver a bespoke ceremony to mark this act of special significance, ensuring the moment is handled with dignity.</p>
+            </div>
+
+            <div class="service-item">
+                <span class="service-title">Pet Committal or Memorial</span>
+                <p class="body-text text-sm">Pets are members of the family. I design tailored ceremonies honouring the passing of your beloved friend and companion.</p>
+            </div>
+
+            <div class="mt-auto pt-4">
+                <img src="assets/claire/assets/service-images/funerals-page.webp" alt="Service" class="rounded-lg h-24 w-full object-cover opacity-80">
+            </div>
+        </div>
+
+        <!-- Panel 6: The Process / FAQ -->
+        <div class="panel panel-bg-primary">
+            <h2 class="text-3xl mb-6">How I Work</h2>
+            <div class="space-y-4">
+                <div class="flex gap-4">
+                    <div class="text-2xl font-serif opacity-50">01</div>
+                    <div>
+                        <p class="font-semibold mb-1">The Meeting</p>
+                        <p class="text-sm opacity-90">I visit you and your family to gather memories, stories, and information about your loved one's life.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="text-2xl font-serif opacity-50">02</div>
+                    <div>
+                        <p class="font-semibold mb-1">The Tribute</p>
+                        <p class="text-sm opacity-90">I craft a unique eulogy and ceremony structure, incorporating music, readings, and personal contributions.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="text-2xl font-serif opacity-50">03</div>
+                    <div>
+                        <p class="font-semibold mb-1">The Delivery</p>
+                        <p class="text-sm opacity-90">I officiate the service with professionalism and compassion, ensuring every detail reflects your wishes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 p-6 bg-white/10 rounded-xl">
+                <h3 class="text-xl mb-3">Get in Touch</h3>
+                <p class="text-sm mb-4">Contact me to discuss how I can help you honour your loved one.</p>
+                <p class="font-semibold">07963 410 263</p>
+                <p class="text-xs">enquiries@fionafuneralcelebrant.co.uk</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const url = "https://fionaarmfieldfuneralcelebrant.co.uk";
+            const qrContainer = document.getElementById('qrcode');
+            if (url && qrContainer) {
+                try {
+                    new QRCode(qrContainer, {
+                        text: url,
+                        width: 100,
+                        height: 100,
+                        colorDark : "#5e8250",
+                        colorLight : "#ffffff",
+                        correctLevel : QRCode.CorrectLevel.H
+                    });
+                } catch (e) {
+                    console.error("QR Generation Error:", e);
+                }
+            }
+        };
+    </script>
+</body>
+</html>

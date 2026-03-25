@@ -1,0 +1,11 @@
+{
+  "name": "brochure-pdf-converter",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "pdf": "node print-to-pdf.js"
+  },
+  "dependencies": {
+    "puppeteer": "^24.0.0"
+  }
+}

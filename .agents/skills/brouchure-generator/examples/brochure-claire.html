@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Claire Cappell - Celebrant Brochure</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Dancing+Script:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      :root {
+        /* Claire Cappell Design System */
+        --primary-bg: #e6e1c5; /* Warm Cream */
+        --text-main: #1a2e1f; /* Dark Forest Green */
+        --accent-orange: #d87a28; /* Vibrant Orange */
+        --white: #ffffff;
+
+        /* Dimensions for A4 Landscape */
+        --page-width: 297mm;
+        --page-height: 210mm;
+        --panel-width: calc(var(--page-width) / 3);
+        --panel-padding: 12mm;
+        --border-radius: 15mm;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Nunito", sans-serif;
+        background-color: #525659;
+        color: var(--text-main);
+        line-height: 1.5;
+        font-size: 11.5pt;
+      }
+
+      /* Brochure Container */
+      .brochure-page {
+        width: var(--page-width);
+        height: var(--page-height);
+        background-color: var(--primary-bg);
+        margin: 20mm auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        position: relative;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        page-break-after: always;
+      }
+
+      /* Fold Lines */
+      .fold-line {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        border-left: 1px dashed rgba(26, 46, 31, 0.1);
+        z-index: 100;
+      }
+      .fold-1 {
+        left: var(--panel-width);
+      }
+      .fold-2 {
+        left: calc(var(--panel-width) * 2);
+      }
+
+      /* Panel Styling */
+      .panel {
+        padding: 8mm 10mm;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", serif;
+        color: var(--text-main);
+        line-height: 1.1;
+      }
+
+      h1 {
+        font-size: 24pt;
+        margin-bottom: 4mm;
+      }
+      h2 {
+        font-size: 20pt;
+        margin-bottom: 4mm;
+        color: var(--accent-orange);
+        position: relative;
+        display: inline-block;
+      }
+      h2::after {
+        content: "";
+        position: absolute;
+        bottom: -1.5mm;
+        left: 0;
+        width: 30mm;
+        height: 0.8mm;
+        background: var(--accent-orange);
+        border-radius: 1mm;
+        opacity: 0.3;
+      }
+      h3 {
+        font-size: 14pt;
+        margin-bottom: 2mm;
+        color: var(--text-main);
+      }
+
+      p {
+        margin-bottom: 3mm;
+      }
+
+      .quote {
+        font-family: "Dancing Script", cursive;
+        font-size: 15pt;
+        color: var(--accent-orange);
+        margin-bottom: 4mm;
+        line-height: 1.2;
+        text-align: center;
+      }
+
+      /* Design Flair Elements */
+      .blob-element {
+        position: absolute;
+        background: var(--accent-orange);
+        filter: blur(40px);
+        opacity: 0.08;
+        border-radius: 50%;
+        z-index: 0;
+      }
+
+      .wavy-divider {
+        width: 100%;
+        height: 8mm;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23D87A28' fill-opacity='0.1'%3E%3C/path%3E%3C/svg%3E");
+        background-size: cover;
+        margin: 3mm 0;
+      }
+
+      /* Non-Square Image Shapes */
+      .arch-image {
+        width: 100%;
+        height: 75mm;
+        object-fit: cover;
+        border-radius: 40mm 40mm 10mm 10mm;
+        border: 3px solid var(--accent-orange);
+        margin-bottom: 4mm;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .organic-image {
+        width: 100%;
+        height: 55mm;
+        object-fit: cover;
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        border: 2px solid var(--accent-orange);
+        margin-bottom: 4mm;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+      }
+
+      .pill-image {
+        width: 100%;
+        height: 45mm;
+        object-fit: cover;
+        object-position: top;
+        border-radius: 25mm;
+        border: 2px solid var(--accent-orange);
+        margin-bottom: 4mm;
+      }
+
+      /* Cover Specifics (Panel 1) */
+      .cover-panel {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        background-color: #f7f5e9; /* Off-white/Cream instead of pure white */
+        padding: 10mm;
+      }
+
+      .cover-logo {
+        width: 45mm;
+        margin-bottom: 6mm;
+      }
+
+      .cover-name {
+        font-family: "Playfair Display", serif;
+        font-size: 30pt;
+        color: var(--text-main);
+        margin-bottom: 1mm;
+        font-weight: 900;
+      }
+
+      .cover-title {
+        font-size: 13pt;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--accent-orange);
+        margin-bottom: 6mm;
+        font-weight: 300;
+      }
+
+      /* Back Panel Specifics (Panel 2) */
+      .back-panel {
+        text-align: center;
+        justify-content: space-between;
+        padding: 10mm 8mm;
+        background: linear-gradient(180deg, var(--primary-bg) 0%, #f7f5e9 100%);
+      }
+
+      .contact-info {
+        text-align: left;
+        margin: 6mm auto;
+        max-width: 75mm;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 4mm;
+        margin-bottom: 4mm;
+        padding: 2.5mm;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 4mm;
+        border: 1px solid rgba(216, 122, 40, 0.1);
+      }
+
+      .contact-icon {
+        color: var(--accent-orange);
+        width: 6mm;
+        height: 6mm;
+      }
+
+      .apc-seal {
+        width: 32mm;
+        margin: 3mm auto;
+        filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.1));
+      }
+
+      /* Service Items */
+      .service-box {
+        background: rgba(255, 255, 255, 0.6);
+        padding: 4mm 5mm;
+        border-radius: 15mm 4mm 15mm 4mm;
+        margin-bottom: 5mm;
+        border: 1px solid rgba(216, 122, 40, 0.15);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+        position: relative;
+      }
+
+      .service-box::before {
+        content: "";
+        position: absolute;
+        top: -1.5mm;
+        left: -1.5mm;
+        right: -1.5mm;
+        bottom: -1.5mm;
+        border: 1px solid var(--accent-orange);
+        border-radius: 17mm 6mm 17mm 6mm;
+        opacity: 0.15;
+        z-index: -1;
+      }
+
+      .service-box h3 {
+        color: var(--accent-orange);
+        margin-bottom: 1.5mm;
+        font-size: 15pt;
+      }
+
+      .icon-accent {
+        width: 12mm;
+        height: 12mm;
+        object-fit: contain;
+      }
+
+      .icon-accent:hover {
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      /* Print Optimization */
+      @media print {
+        @page {
+          size: 303mm 216mm;
+          margin: 0;
+        }
+        :root {
+          --page-width: 303mm;
+          --page-height: 216mm;
+          --panel-width: 101mm;
+        }
+        body {
+          background-color: white;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        .brochure-page {
+          margin: 0;
+          box-shadow: none;
+          width: 303mm;
+          height: 216mm;
+        }
+        .fold-line {
+          display: block;
+          border-left: 1px solid #1a2e1f;
+        }
+        .crop-mark {
+          display: block;
+        }
+        .bleed-zone {
+          display: block;
+        }
+      }
+
+      .crop-mark {
+        display: none;
+        position: absolute;
+        width: 15mm;
+        height: 15mm;
+        z-index: 200;
+      }
+      .crop-mark::before,
+      .crop-mark::after {
+        content: "";
+        position: absolute;
+        background: #1a2e1f;
+      }
+      .crop-mark.top-left {
+        top: -3mm;
+        left: -3mm;
+      }
+      .crop-mark.top-left::before {
+        width: 10mm;
+        height: 1mm;
+        top: 0;
+        left: 0;
+      }
+      .crop-mark.top-left::after {
+        width: 1mm;
+        height: 10mm;
+        top: 0;
+        left: 0;
+      }
+      .crop-mark.top-right {
+        top: -3mm;
+        right: -3mm;
+      }
+      .crop-mark.top-right::before {
+        width: 10mm;
+        height: 1mm;
+        top: 0;
+        right: 0;
+      }
+      .crop-mark.top-right::after {
+        width: 1mm;
+        height: 10mm;
+        top: 0;
+        right: 0;
+      }
+      .crop-mark.bottom-left {
+        bottom: -3mm;
+        left: -3mm;
+      }
+      .crop-mark.bottom-left::before {
+        width: 10mm;
+        height: 1mm;
+        bottom: 0;
+        left: 0;
+      }
+      .crop-mark.bottom-left::after {
+        width: 1mm;
+        height: 10mm;
+        bottom: 0;
+        left: 0;
+      }
+      .crop-mark.bottom-right {
+        bottom: -3mm;
+        right: -3mm;
+      }
+      .crop-mark.bottom-right::before {
+        width: 10mm;
+        height: 1mm;
+        bottom: 0;
+        right: 0;
+      }
+      .crop-mark.bottom-right::after {
+        width: 1mm;
+        height: 10mm;
+        bottom: 0;
+        right: 0;
+      }
+
+      .bleed-zone {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 3mm solid transparent;
+        z-index: 150;
+        pointer-events: none;
+      }
+      .bleed-zone::before {
+        content: "";
+        position: absolute;
+        top: -3mm;
+        left: 0;
+        right: 0;
+        height: 3mm;
+        background: repeating-linear-gradient(
+          90deg,
+          rgba(26, 46, 31, 0.08) 0,
+          rgba(26, 46, 31, 0.08) 8px,
+          transparent 8px,
+          transparent 16px
+        );
+      }
+      .bleed-zone::after {
+        content: "";
+        position: absolute;
+        bottom: -3mm;
+        left: 0;
+        right: 0;
+        height: 3mm;
+        background: repeating-linear-gradient(
+          90deg,
+          rgba(26, 46, 31, 0.08) 0,
+          rgba(26, 46, 31, 0.08) 8px,
+          transparent 8px,
+          transparent 16px
+        );
+      }
+
+      /* Screen Preview Adjustments */
+      @media screen and (max-width: 297mm) {
+        body {
+          background-color: #f0f0f0;
+          padding: 20px;
+        }
+        .brochure-page {
+          transform: scale(0.8);
+          transform-origin: top center;
+          margin-bottom: -40mm;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- SIDE A: OUTER (Outside) -->
+    <div class="brochure-page">
+      <div class="crop-mark top-left"></div>
+      <div class="crop-mark top-right"></div>
+      <div class="crop-mark bottom-left"></div>
+      <div class="crop-mark bottom-right"></div>
+      <div class="bleed-zone"></div>
+      <div class="fold-line fold-1"></div>
+      <div class="fold-line fold-2"></div>
+      <div
+        class="blob-element"
+        style="width: 100mm; height: 100mm; top: -20mm; left: -20mm"
+      ></div>
+
+      <!-- Panel 3: Meet Claire (Inside Flap) -->
+      <div class="panel">
+        <h2>Meet Claire</h2>
+        <p class="quote">
+          "A birthday isn't a birthday without a balloon and a cake!"
+        </p>
+        <p style="font-size: 10.5pt">
+          I'm an independent celebrant living in the heart of the beautiful
+          Cotswolds. My journey has taken me from the precision of a
+          <strong>Solicitor's office</strong> to the heart of the community as
+          an <strong>Award-winning Cafe Owner</strong>, and finally to my true
+          calling: <strong>Celebrancy</strong>.
+        </p>
+
+        <img
+          src="../src/assets/personal-images/personal-claire-signing-milton-end-barns-document.webp"
+          alt="Claire in action"
+          class="organic-image"
+        />
+
+        <p style="font-size: 10.5pt">
+          I bring a unique blend of <strong>meticulous organization</strong>,
+          <strong>deep-rooted empathy</strong>, and a genuine
+          <strong>love for celebration</strong>. Whether it's a joyful wedding
+          or a tender farewell, I'm here to ensure your ceremony is as vibrant
+          and unique as you are.
+        </p>
+      </div>
+
+      <!-- Panel 2: Contact & Back Cover -->
+      <div class="panel back-panel">
+        <div
+          class="blob-element"
+          style="width: 80mm; height: 80mm; bottom: -10mm; right: -10mm"
+        ></div>
+        <div>
+          <img
+            src="../src/assets/logo.png"
+            alt="Claire Cappell Logo"
+            style="width: 45mm; margin-bottom: 8mm"
+          />
+          <h3
+            style="
+              letter-spacing: 0.1em;
+              text-transform: uppercase;
+              font-size: 14pt;
+            "
+          >
+            Let's Create Magic
+          </h3>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i data-lucide="mail" class="contact-icon"></i>
+              <span style="font-weight: 700">claire@clairecappell.co.uk</span>
+            </div>
+            <div class="contact-item">
+              <i data-lucide="phone" class="contact-icon"></i>
+              <span style="font-weight: 700">07780 670 766</span>
+            </div>
+            <div class="contact-item">
+              <i data-lucide="globe" class="contact-icon"></i>
+              <span style="font-weight: 700">clairecappell.co.uk</span>
+            </div>
+            <div class="contact-item">
+              <i data-lucide="map-pin" class="contact-icon"></i>
+              <span style="font-weight: 700">The Cotswolds & Beyond</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="position: relative; z-index: 2">
+          <div
+            style="
+              margin-bottom: 4mm;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            "
+          >
+            <div
+              id="qrcode"
+              style="
+                width: 28mm;
+                height: 28mm;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
+            ></div>
+            <p
+              style="
+                font-size: 9pt;
+                font-weight: 700;
+                color: var(--accent-orange);
+                letter-spacing: 0.05em;
+                margin-top: 2mm;
+              "
+            >
+              VISIT MY WEBSITE
+            </p>
+          </div>
+          <p
+            style="
+              font-size: 10pt;
+              margin-bottom: 3mm;
+              font-weight: 700;
+              color: var(--text-main);
+            "
+          >
+            Trained & Certified By
+          </p>
+          <img
+            src="../src/assets/apc-logo/APC-seal.png"
+            alt="APC Seal"
+            class="apc-seal"
+          />
+        </div>
+      </div>
+
+      <!-- Panel 1: Front Cover -->
+      <div class="panel cover-panel">
+        <div
+          class="blob-element"
+          style="width: 120mm; height: 120mm; top: 10%; left: -10%"
+        ></div>
+        <img
+          src="../src/assets/logo.png"
+          alt="Claire Cappell Logo"
+          class="cover-logo"
+        />
+        <img
+          src="../src/assets/personal-images/claire-portrait-personal-smiling-woman-with-red-hair.webp"
+          alt="Claire Cappell"
+          class="arch-image"
+        />
+        <div class="cover-name">Claire Cappell</div>
+        <div class="cover-title">Celebrant</div>
+        <div class="wavy-divider"></div>
+        <p class="quote" style="font-size: 18pt; margin-top: 2mm">
+          "Bringing Colour to life's most memorable events."
+        </p>
+      </div>
+    </div>
+
+    <!-- SIDE B: INNER (Inside Spread) -->
+    <div class="brochure-page">
+      <div class="crop-mark top-left"></div>
+      <div class="crop-mark top-right"></div>
+      <div class="crop-mark bottom-left"></div>
+      <div class="crop-mark bottom-right"></div>
+      <div class="bleed-zone"></div>
+      <div class="fold-line fold-1"></div>
+      <div class="fold-line fold-2"></div>
+      <div
+        class="blob-element"
+        style="width: 150mm; height: 150mm; top: -50mm; right: -50mm"
+      ></div>
+
+      <!-- Panel 4: About Me / Personal -->
+      <div class="panel">
+        <h2>Life in Colour</h2>
+        <p>
+          I live with my husband of 30 years and our two beloved dogs in the
+          heart of the Cotswolds. As a
+          <strong>mother of four daughters</strong>, I've navigated every
+          milestone imaginable, from first steps to wedding aisles.
+        </p>
+
+        <div
+          style="
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 6mm 0;
+            background: rgba(255, 255, 255, 0.4);
+            padding: 5mm;
+            border-radius: 10mm;
+          "
+        >
+          <img
+            src="../src/assets/branding/heart-icon.png"
+            class="icon-accent"
+            alt="Heart"
+          />
+          <img
+            src="../src/assets/branding/heart-icon.png"
+            class="icon-accent"
+            alt="Heart"
+          />
+          <img
+            src="../src/assets/branding/flower-pot-icon.png"
+            class="icon-accent"
+            alt="Flower Pot"
+          />
+        </div>
+
+        <p>
+          My time as the owner of the award-winning
+          <strong>"Little Ginger Deli and Cafe"</strong> taught me that life's
+          best moments are built on connection, warmth, and really good cake!
+        </p>
+
+        <img
+          src="../src/assets/personal-images/personal-smiling-group-posing-outdoors.webp"
+          alt="Claire with group"
+          class="pill-image"
+        />
+
+        <p style="font-size: 10.5pt; font-style: italic">
+          Described as gregarious, warm, and kind, I bring a deep sense of
+          empathy—honed through years as a carer—to every service I write.
+        </p>
+      </div>
+
+      <!-- Panel 5: Core Services -->
+      <div class="panel">
+        <h2>Our Services</h2>
+
+        <div class="service-box">
+          <img
+            src="../src/assets/generated/hero-weddings.png"
+            alt="Weddings"
+            style="
+              width: 100%;
+              height: 25mm;
+              object-fit: cover;
+              border-radius: 12mm 4mm 12mm 4mm;
+              margin-bottom: 3mm;
+              border: 2px solid var(--accent-orange);
+            "
+          />
+          <h3>Weddings & Joy</h3>
+          <p style="font-size: 10pt">
+            Your love story is one-of-a-kind. I'll craft a bespoke ceremony that
+            reflects your journey, your quirks, and your future. From
+            <strong>Vow Renewals</strong> to
+            <strong>Milestone Anniversaries</strong>.
+          </p>
+        </div>
+
+        <div class="service-box">
+          <img
+            src="../src/assets/generated/hero-funerals.png"
+            alt="Funerals"
+            style="
+              width: 100%;
+              height: 25mm;
+              object-fit: cover;
+              border-radius: 4mm 12mm 4mm 12mm;
+              margin-bottom: 3mm;
+              border: 2px solid var(--accent-orange);
+            "
+          />
+          <h3>Funerals & Farewells</h3>
+          <p style="font-size: 10pt">
+            Grief is a personal path. I will walk beside you, using my writing
+            skills to create a tribute that honours your loved one with
+            <strong>genuine dignity, warmth, and respect</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Panel 6: Naming & Process -->
+      <div class="panel">
+        <h2>Naming & Milestones</h2>
+        <div class="service-box">
+          <img
+            src="../src/assets/generated/hero-naming.png"
+            alt="Naming"
+            style="
+              width: 100%;
+              height: 25mm;
+              object-fit: cover;
+              border-radius: 12mm;
+              margin-bottom: 3mm;
+              border: 2px solid var(--accent-orange);
+            "
+          />
+          <h3>Welcoming New Life</h3>
+          <p style="font-size: 10pt">
+            A naming ceremony is a beautiful, non-religious way to welcome a
+            child. We can include <strong>symbolic rituals</strong> like tree
+            planting, sand blending, or guide-parent promises.
+          </p>
+        </div>
+
+        <div
+          class="wavy-divider"
+          style="transform: rotate(180deg); margin: 2mm 0"
+        ></div>
+
+        <h3 style="text-align: center; margin-top: 1mm; font-size: 13pt">
+          My Promise
+        </h3>
+        <p class="quote" style="font-size: 13pt; margin-bottom: 2mm">
+          "Warm, professional, and heartfelt — like a warm hug."
+        </p>
+        <p style="font-size: 10pt; text-align: center">
+          Together, we'll fill your ceremony with the colours of your life, your
+          stories, and your most precious memories.
+        </p>
+
+        <div style="margin-top: auto; text-align: center">
+          <img src="../src/assets/logo.png" alt="Logo" style="width: 25mm" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      lucide.createIcons();
+
+      // Auto-generate QR Code
+      window.onload = function () {
+        console.log("Window loaded, generating QR code...");
+        const url = "https://clairecappell.co.uk";
+        const qrContainer = document.getElementById("qrcode");
+        if (url && qrContainer) {
+          try {
+            new QRCode(qrContainer, {
+              text: url,
+              width: 112, // 28mm approx
+              height: 112,
+              colorDark: "#1A2E1F",
+              colorLight: "#ffffff",
+              correctLevel: QRCode.CorrectLevel.H,
+            });
+            console.log("QR code generated successfully for:", url);
+          } catch (e) {
+            console.error("Error generating QR code:", e);
+            qrContainer.innerHTML =
+              "<p style='font-size: 8pt; color: red;'>QR Error</p>";
+          }
+        } else {
+          console.warn("QR container or URL missing:", { url, qrContainer });
+        }
+      };
+    </script>
+  </body>
+</html>
