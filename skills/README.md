@@ -4,7 +4,7 @@ This starter assumes a workflow where the agent uses the right skill for the rig
 
 ## Project-Local Skills
 
-These are installed directly in this repo under `.cursor/skills/`:
+These are installed directly in this repo under `.agents/skills/`:
 
 - `celebrant-workflow`
 - `frontend-design`
