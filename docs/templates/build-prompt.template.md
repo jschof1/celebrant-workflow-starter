@@ -22,9 +22,15 @@ By default:
 
 List the hard rules for copy, structure, APC requirements, imagery, and tone.
 
+Include the locked logo direction, high-contrast background rhythm, asset-manifest rule, and the poster/reduced-motion requirement for every video background.
+
 ## Visual Direction
 
 Summarise the intended design language in build-ready terms.
+
+State where Codex Imagen backgrounds, client assets, colour fields, and (if approved) Pixabay video backgrounds belong. Specify the overlay and fallback that keeps text readable.
+
+Name the two or three approved signature moments that should make the rendered site feel memorable. Build them into the hierarchy and client story rather than layering decorative effects over an ordinary page.
 
 ## Motion Direction
 
@@ -39,6 +45,8 @@ Define:
 - styling expectations
 - responsiveness
 - performance expectations
+- image and video loading behaviour
+- form success state and non-secret email setup readiness
 
 ## Page-Specific Direction
 

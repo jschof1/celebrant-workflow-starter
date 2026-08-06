@@ -32,6 +32,7 @@ These docs should answer:
 - what design direction fits them
 - what site pages need to exist
 - what brochure content and imagery should be used
+- which logo, still-background, video-background, and form-email decisions are ready
 
 At this stage, the build should no longer depend on rummaging through the raw folder.
 
@@ -40,6 +41,16 @@ At this stage, the build should no longer depend on rummaging through the raw fo
 Use the `site/` app as the implementation base.
 
 The site should be built from the canonical docs, not from guesswork and not by dumping all supplied copy straight onto the homepage.
+
+Use `docs/assets/asset-manifest.md` to drive logo, Codex Imagen background, and approved Pixabay video work. Backgrounds should create a deliberate high-contrast visual rhythm while retaining readable text, a poster, and a reduced-motion fallback for video.
+
+Prepare mailbox and FormSubmit work only after the domain and final form locations are known; it remains a separately approved provider action.
+
+## Stage 3.5: Quality Loop
+
+After the first coherent build, use `docs/qa/quality-loop.md` to run a bounded builder-critic loop. The lead agent makes one high-impact improvement at a time; fresh visual and technical critics inspect the rendered artifact and verification evidence, rather than the builder's summary.
+
+Keep the loop local and approval-gated. Stop when the recorded success criteria pass, a boundary fires, or a client decision is needed.
 
 ## Stage 4: Brochure Build
 

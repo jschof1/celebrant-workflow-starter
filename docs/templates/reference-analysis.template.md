@@ -32,6 +32,9 @@ Review:
 - collateral pieces
 - service imagery
 - palette clues
+- asset rights, crop quality, and whether client material can support background-led design
+- whether a Codex Imagen logo or generated background is needed
+- useful Pixabay video themes, excluding clips with rights or tone concerns
 
 ## Reference Website Analysis
 
@@ -49,3 +52,7 @@ Define the most accurate phrase for the intended feel.
 ## Design Conclusion
 
 Write a concise recommendation for the overall direction the site should take.
+
+## Background and Motion Recommendation
+
+Define the planned background rhythm, high-contrast moments, and whether one or two purposeful video backgrounds would strengthen the route. State the intended poster, mobile, and reduced-motion fallback.

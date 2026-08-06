@@ -18,8 +18,11 @@ Use this as the canonical version of the client's supplied facts and copy.
 - Primary colours:
 - Secondary colours:
 - Fonts:
-- Logo status:
+- Logo status: supplied and approved / supplied but unusable / needs Codex Imagen concepts
 - Existing collateral:
+- Visual assets and usage rights:
+- Background preferences or exclusions:
+- Video-background preference or exclusion:
 
 ## Services
 
@@ -53,6 +56,17 @@ Note:
 - tone words
 - visual preferences
 - imagery notes
+- preferred background rhythm or contrast level
+- video references or concerns
+
+## Contact Form and Mailbox Direction
+
+- Desired public mailbox (for example, `hello@domain`):
+- Contact-form locations and fields:
+- Form success-state preference:
+- Domain and provider readiness:
+
+Never record mailbox passwords or other secrets in this document.
 
 ## Missing Information
 

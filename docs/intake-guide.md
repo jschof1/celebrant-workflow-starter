@@ -25,6 +25,9 @@ Look for:
 - design preferences
 - reference websites
 - logos and portraits
+- asset permissions or restrictions
+- background and video preferences
+- desired contact mailbox and form locations
 
 ## Common Problems
 
@@ -48,7 +51,7 @@ Protect the information architecture and reduce duplication across pages.
 
 Client folders often contain oversized, poorly cropped, or inconsistent images.
 
-Keep the useful ones, note the weak ones, and define sensible fallback imagery in the design system.
+Keep the useful ones, note the weak ones, and define sensible fallback imagery in the design system. Record every selected generated or stock asset in the asset manifest before it enters the build.
 
 ## Canonical Output Docs
 
@@ -60,5 +63,6 @@ Once intake is complete, the key information should live in these documents:
 - `master-prompt.md`
 - `build-prompt.md`
 - `brochure-plan.md`
+- `assets/asset-manifest.md`
 
 The raw folder can remain messy after that.

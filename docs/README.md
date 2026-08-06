@@ -18,6 +18,12 @@ Use the files in `templates/` to create the working project documents:
 - `master-prompt.template.md`
 - `build-prompt.template.md`
 - `brochure-plan.template.md`
+- `asset-manifest.template.md`
+- `quality-loop.template.md`
+
+## Asset Record
+
+Create `docs/assets/asset-manifest.md` before implementation. It records the provenance, rights, crop, contrast treatment, and fallback for logo, background, and video assets without recording secrets.
 
 ## Working Rule
 

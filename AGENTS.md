@@ -14,7 +14,8 @@ When entering this repo, read these files first:
 2. `docs/celebrant-website-guidelines.md`
 3. `docs/workflow-overview.md`
 4. `docs/intake-guide.md`
-5. the relevant template files in `docs/templates/`
+5. `.agents/skills/apc-new-website/SKILL.md` when this is a new project or a full delivery pass
+6. the relevant template files in `docs/templates/`
 
 If a project-specific brief and prompts already exist, read those before making build decisions.
 
@@ -59,11 +60,12 @@ Use the design system and build prompt to shape the site around the client's voi
 
 ## Skill Usage
 
-Use the project-local skills in `.cursor/skills/` when working in this repository.
+Use the project-local skills in `.agents/skills/` when working in this repository.
 
 The core set is:
 
-- `.cursor/skills/celebrant-workflow/SKILL.md`
+- `.agents/skills/apc-new-website/SKILL.md`
+- `.agents/skills/celebrant-workflow/SKILL.md`
 - `.cursor/skills/frontend-design/SKILL.md`
 - `.cursor/skills/awwwwards-animations/SKILL.md`
 - `.cursor/skills/brochure-generator/SKILL.md`
